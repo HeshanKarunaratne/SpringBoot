@@ -1,8 +1,10 @@
 package com.example.heshan.SpringBoot.controller;
 
 import com.example.heshan.SpringBoot.dto.Customer;
+import com.example.heshan.SpringBoot.dto.Employee;
 import com.example.heshan.SpringBoot.dto.NewCustomerRequest;
 import com.example.heshan.SpringBoot.service.CustomerService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,5 +40,10 @@ public class CustomerController {
     public void updateCustomer(@PathVariable("id") Integer id,
                                @RequestBody NewCustomerRequest newCustomerRequest) {
         customerService.updateCustomer(id, newCustomerRequest);
+    }
+
+    @PostMapping("/valid")
+    public void addCustomersValid(@RequestBody @Valid Employee employee) {
+        System.out.println("employee: " + employee);
     }
 }
